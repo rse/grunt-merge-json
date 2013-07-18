@@ -24,24 +24,40 @@
 
 /* global module: false */
 module.exports = function (grunt) {
-    grunt.registerMultiTask("merge-json", "Merge JSON Files", function () {
-        /*  prepapre options  */
-        var options = this.options({});
+    grunt.registerMultiTask("merge-json", "Merge Multiple JSON Files", function () {
+        /*  prepare options  */
+        var options = this.options({
+            replacer: null,
+            space: "\t"
+        });
         grunt.verbose.writeflags(options, "Options");
 
-        /*  iterate over all src-dest file pairs.  */
+        /*  iterate over all src-dest file pairs  */
         this.files.forEach(function (f) {
-            var json = {};
-            f.src.forEach(function (src) {
-                if (!grunt.file.exists(src))
-                    grunt.log.warn("JSON source file \"" + src + "\" not found.");
-                else {
-                    var fragment = grunt.file.readJSON(src);
-                    json = grunt.util._.extend(json, fragment);
-                }
-            });
-            grunt.file.write(f.dest, json);
-            grunt.log.writeln("JSON destination file \"" + f.dest + "\" created.");
+            try {
+                /*  start with an empty object  */
+                var json = {};
+                f.src.forEach(function (src) {
+                    /*  merge JSON file into object  */
+                    if (!grunt.file.exists(src))
+                        throw "JSON source file \"" + src + "\" not found.";
+                    else {
+                        var fragment;
+                        grunt.log.debug("reading JSON source file \"" + src + "\"");
+                        try { fragment = grunt.file.readJSON(src); }
+                        catch (e) { grunt.fail.warn(e); }
+                        json = grunt.util._.extend(json, fragment);
+                    }
+                });
+
+                /*  write object as new JSON  */
+                grunt.log.debug("writing JSON destination file \"" + f.dest + "\"");
+                grunt.file.write(f.dest, JSON.stringify(json, options.replacer, options.space));
+                grunt.log.ok("JSON destination file \"" + f.dest + "\" created.");
+            }
+            catch (e) {
+                grunt.fail.warn(e);
+            }
         });
     });
 };

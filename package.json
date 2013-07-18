@@ -2,7 +2,7 @@
     "name":        "grunt-merge-json",
     "homepage":    "http://github.com/rse/grunt-merge-json",
     "description": "Grunt Task for Merging Multiple JSON Files",
-    "version":     "0.9.0",
+    "version":     "0.9.1",
     "license":     "MIT",
     "author": {
         "name":    "Ralf S. Engelschall",

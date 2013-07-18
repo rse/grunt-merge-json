@@ -25,6 +25,11 @@ Gruntfile with this line of JavaScript:
 grunt.loadNpmTasks('grunt-merge-json');
 ```
 
+## Task Options
+
+- `replacer`: (default `null`) the replacer argument for `JSON.stringify()` (second argument).
+- `space`: (default `\t`) the space argument for `JSON.stringify()` (third argument).
+
 ## Merge JSON Task
 
 _Run this task with the `grunt merge-json` command._
