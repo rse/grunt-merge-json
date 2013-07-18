@@ -1,7 +1,7 @@
 
 # grunt-merge-json
 
-> Merge JSON Multiple Files
+Grunt Task for Merging Multiple JSON Files
 
 ## Getting Started
 
@@ -38,7 +38,7 @@ Assuming we have the following types of source JSON files:
 
 - `src/foo/foo-en.json`:
 
-```js
+```json
 {
     "foo": {
         "title": "The Foo",
@@ -48,16 +48,19 @@ Assuming we have the following types of source JSON files:
 ```
 
 - `src/bar/bar-en.json`:
+
+```json
 {
     "bar": {
         "title": "The Bar",
         "name":  "An even more wonderful component"
     }
 }
+```
 
 Assuming we want to generate the following destination JSON file:
 
-```js
+```json
 {
     "foo": {
         "title": "The Foo",
