@@ -3,6 +3,13 @@
 
 Grunt Task for Merging Multiple JSON Files
 
+<p/>
+<img src="https://nodei.co/npm/grunt-merge-json.png?downloads=true&stars=true" alt=""/>
+
+<p/>
+<img src="https://david-dm.org/rse/grunt-merge-json.png" alt=""/>
+
+
 ## Getting Started
 
 This plugin requires Grunt `~0.4.0`
