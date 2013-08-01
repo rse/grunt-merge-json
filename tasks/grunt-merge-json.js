@@ -22,13 +22,16 @@
 **  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+var path = require('path');
+
 /* global module: false */
 module.exports = function (grunt) {
     grunt.registerMultiTask("merge-json", "Merge Multiple JSON Files", function () {
         /*  prepare options  */
         var options = this.options({
             replacer: null,
-            space: "\t"
+            space: "\t",
+            includeFilename: false
         });
         grunt.verbose.writeflags(options, "Options");
 
@@ -37,14 +40,25 @@ module.exports = function (grunt) {
             try {
                 /*  start with an empty object  */
                 var json = {};
+
                 f.src.forEach(function (src) {
                     /*  merge JSON file into object  */
                     if (!grunt.file.exists(src))
                         throw "JSON source file \"" + src + "\" not found.";
                     else {
-                        var fragment;
+                        var fragment = {},
+                            fname = path.basename(src, '.json');
+                        
                         grunt.log.debug("reading JSON source file \"" + src + "\"");
-                        try { fragment = grunt.file.readJSON(src); }
+                        
+                        try { 
+                            var content = grunt.file.readJSON(src);
+                            if (options.includeFilename){
+                                fragment[fname] = content; 
+                            } else {
+                                fragment = content; 
+                            }
+                        }
                         catch (e) { grunt.fail.warn(e); }
                         json = grunt.util._.extend(json, fragment);
                     }
