@@ -53,7 +53,7 @@ module.exports = function (grunt) {
                 /*  write object as new JSON  */
                 grunt.log.debug("writing JSON destination file \"" + f.dest + "\"");
                 grunt.file.write(f.dest, JSON.stringify(json, options.replacer, options.space));
-                grunt.log.ok("JSON destination file \"" + f.dest + "\" created.");
+                grunt.log.writeln("File \"" + f.dest + "\" created.");
             }
             catch (e) {
                 grunt.fail.warn(e);
