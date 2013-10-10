@@ -24,6 +24,9 @@
 
 /* global module: false */
 module.exports = function (grunt) {
+    /* global require: false */
+    var chalk = require("chalk");
+
     grunt.registerMultiTask("merge-json", "Merge Multiple JSON Files", function () {
         /*  prepare options  */
         var options = this.options({
@@ -40,10 +43,10 @@ module.exports = function (grunt) {
                 f.src.forEach(function (src) {
                     /*  merge JSON file into object  */
                     if (!grunt.file.exists(src))
-                        throw "JSON source file \"" + src + "\" not found.";
+                        throw "JSON source file \"" + chalk.red(src) + "\" not found.";
                     else {
                         var fragment;
-                        grunt.log.debug("reading JSON source file \"" + src + "\"");
+                        grunt.log.debug("reading JSON source file \"" + chalk.green(src) + "\"");
                         try { fragment = grunt.file.readJSON(src); }
                         catch (e) { grunt.fail.warn(e); }
                         json = grunt.util._.extend(json, fragment);
@@ -51,9 +54,9 @@ module.exports = function (grunt) {
                 });
 
                 /*  write object as new JSON  */
-                grunt.log.debug("writing JSON destination file \"" + f.dest + "\"");
+                grunt.log.debug("writing JSON destination file \"" + chalk.green(f.dest) + "\"");
                 grunt.file.write(f.dest, JSON.stringify(json, options.replacer, options.space));
-                grunt.log.writeln("File \"" + f.dest + "\" created.");
+                grunt.log.writeln("File \"" + chalk.green(f.dest) + "\" created.");
             }
             catch (e) {
                 grunt.fail.warn(e);
