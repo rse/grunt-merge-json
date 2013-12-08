@@ -49,7 +49,9 @@ module.exports = function (grunt) {
                         grunt.log.debug("reading JSON source file \"" + chalk.green(src) + "\"");
                         try { fragment = grunt.file.readJSON(src); }
                         catch (e) { grunt.fail.warn(e); }
-                        json = grunt.util._.extend(json, fragment);
+                        json = grunt.util._.merge(json, fragment, function(a, b) {
+                            return grunt.util._.isArray(a) ? a.concat(b) : undefined;
+                        });
                     }
                 });
 
