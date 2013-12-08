@@ -25,7 +25,8 @@
 /* global module: false */
 module.exports = function (grunt) {
     /* global require: false */
-    var chalk = require("chalk");
+    var chalk = require("chalk"),
+        _ = require("lodash");
 
     grunt.registerMultiTask("merge-json", "Merge Multiple JSON Files", function () {
         /*  prepare options  */
@@ -49,8 +50,9 @@ module.exports = function (grunt) {
                         grunt.log.debug("reading JSON source file \"" + chalk.green(src) + "\"");
                         try { fragment = grunt.file.readJSON(src); }
                         catch (e) { grunt.fail.warn(e); }
-                        json = grunt.util._.merge(json, fragment, function(a, b) {
-                            return grunt.util._.isArray(a) ? a.concat(b) : undefined;
+
+                        json = _.merge(json, fragment, function(a, b) {
+                            return _.isArray(a) ? a.concat(b) : undefined;
                         });
                     }
                 });
