@@ -31,7 +31,8 @@ module.exports = function (grunt) {
         /*  prepare options  */
         var options = this.options({
             replacer: null,
-            space: "\t"
+            space: "\t",
+            root: undefined
         });
         grunt.verbose.writeflags(options, "Options");
 
@@ -55,7 +56,14 @@ module.exports = function (grunt) {
 
                 /*  write object as new JSON  */
                 grunt.log.debug("writing JSON destination file \"" + chalk.green(f.dest) + "\"");
-                grunt.file.write(f.dest, JSON.stringify(json, options.replacer, options.space));
+                var data = {};
+                if (options.root) {
+                  data[options.root] = json;
+                }
+                else {
+                  data = json;
+                }
+                grunt.file.write(f.dest, JSON.stringify(data, options.replacer, options.space));
                 grunt.log.writeln("File \"" + chalk.green(f.dest) + "\" created.");
             }
             catch (e) {
@@ -64,4 +72,3 @@ module.exports = function (grunt) {
         });
     });
 };
-
