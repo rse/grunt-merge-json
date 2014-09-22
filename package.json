@@ -32,7 +32,8 @@
         "grunt":                "~0.4.1"
     },
     "dependencies": {
-        "chalk":                "~0.3.0"
+        "chalk":                "~0.3.0",
+        "lodash":               "~2.4.1"
     },
     "engines": {
         "node":                 ">=0.10.0"
