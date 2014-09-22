@@ -25,7 +25,7 @@
 /* global module: false */
 module.exports = function (grunt) {
     /* global require: false */
-    var chalk = require("chalk"),
+    var chalk = require("chalk");
     var _ = require("lodash");
 
     grunt.registerMultiTask("merge-json", "Merge Multiple JSON Files", function () {
