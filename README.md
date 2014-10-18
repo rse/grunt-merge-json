@@ -117,3 +117,58 @@ grunt.initConfig({
 });
 ```
 
+### Handling naming collisions
+
+Lets assume that we want to merge these two files with colliding keys.
+
+- `src/foo/en.json`:
+```json
+{
+    "title": "Title"
+}
+```
+
+- `src/bar/en.json`:
+```json
+{
+    "title": "Another title"
+}
+```
+
+To prevent overwriting the same keys we can configure to prepend a key before the object.
+Prepending can be configured as a regular expression that will be evaluated against the source file name.
+
+The parameters are
+
+- `regexp`: (default `null`) the regular expression to be evaluated.
+- `match`: (default `null`) the index of the result array from String.match()
+
+```js
+grunt.initConfig({
+    "merge-json": {        
+        options: {
+            prepend: {
+                regexp: '[\/]([a-z]+)[\/]',
+                match: 1
+            }                
+        },
+        "en": {
+            src: [ "src/**/en.json" ],
+            dest: "www/en.json"
+        }
+    }
+});
+```
+
+This example will produce the following output
+
+```json
+{
+    "foo": {
+        "title": "Title"
+    },
+    "bar": {
+        "title": "Another title"
+    }
+}
+```
