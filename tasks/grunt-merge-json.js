@@ -50,6 +50,10 @@ module.exports = function (grunt) {
                         grunt.log.debug("reading JSON source file \"" + chalk.green(src) + "\"");
                         try { fragment = grunt.file.readJSON(src); }
                         catch (e) { grunt.fail.warn(e); }
+
+                        if( _.has( json,_.keys(fragment) ) ){
+                            throw "There is Duplicate with \"" + chalk.red(src) + "\" .";
+                        }
                         json = _.merge(json, fragment, function (a, b) {
                             return _.isArray(a) ? a.concat(b) : undefined;
                         });
