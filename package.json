@@ -1,41 +1,81 @@
 {
-    "name":        "grunt-merge-json",
-    "homepage":    "http://github.com/rse/grunt-merge-json",
-    "description": "Grunt Task for Merging Multiple JSON Files",
-    "version":     "0.9.5",
-    "license":     "MIT",
-    "author": {
-        "name":    "Ralf S. Engelschall",
-        "email":   "rse@engelschall.com",
-        "url":     "http://engelschall.com"
-    },
-    "keywords": [
-        "gruntplugin",
-        "merge",
-        "json"
-    ],
-    "repository": {
-        "type": "git",
-        "url":  "git://github.com/rse/grunt-merge-json.git"
-    },
-    "bugs": {
-        "url":  "http://github.com/rse/grunt-merge-json/issues"
-    },
-    "main": "Gruntfile.js",
-    "devDependencies": {
-        "grunt":                "~0.4.5",
-        "grunt-cli":            "~0.1.13",
-        "grunt-contrib-jshint": "~0.10.0",
-        "grunt-contrib-clean":  "~0.6.0"
-    },
-    "peerDependencies": {
-        "grunt":                "~0.4.5"
-    },
-    "dependencies": {
-        "chalk":                "~0.5.1",
-        "lodash":               "~2.4.1"
-    },
-    "engines": {
-        "node":                 ">=0.10.0"
-    }
+  "_args": [
+    [
+      "grunt-merge-json@^0.9.5",
+      "C:\\tfs\\NNG\\ETC\\dev\\ETC\\NGA"
+    ]
+  ],
+  "_from": "grunt-merge-json-xduplicate@>=0.9.5 <0.10.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/grunt-merge-json-xduplicate",
+  "_npmUser": {
+    "email": "rse@engelschall.com",
+    "name": "rse"
+  },
+  "_npmVersion": "1.4.28",
+  "_phantomChildren": {
+    "escape-string-regexp": "1.0.4"
+  },
+  "_requested": {
+    "name": "grunt-merge-json-xduplicate",
+    "raw": "grunt-merge-json-xduplicate@^0.9.5",
+    "rawSpec": "^0.9.5",
+    "scope": null,
+    "spec": ">=0.9.5 <0.10.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/grunt-merge-json/-/grunt-merge-json-0.9.5.tgz",
+  "_shasum": "16c176f39b8f9434ea64b4451d1d09088a4f2468",
+  "_shrinkwrap": null,
+  "_spec": "grunt-merge-json@^0.9.5",
+  "_where": "C:\\tfs\\NNG\\ETC\\dev\\ETC\\NGA",
+  "author": "Ralf S. Engelschall <rse@engelschall.com> (http://engelschall.com)",
+  "bugs": {
+    "url": "http://github.com/rse/grunt-merge-json/issues"
+  },
+  "dependencies": {
+    "chalk": "~0.5.1",
+    "lodash": "~2.4.1"
+  },
+  "description": "Grunt Task for Merging Multiple JSON Files",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-jshint": "~0.10.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "16c176f39b8f9434ea64b4451d1d09088a4f2468",
+    "tarball": "http://registry.npmjs.org/grunt-merge-json/-/grunt-merge-json-0.9.5.tgz"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "homepage": "https://github.com/danielshama/grunt-merge-json",
+  "keywords": [
+    "gruntplugin",
+    "json",
+    "merge"
+  ],
+  "license": "MIT",
+  "main": "Gruntfile.js",
+  "maintainers": [
+    "rse <rse@engelschall.com>"
+  ],
+  "name": "grunt-merge-json-xduplicate",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rse/grunt-merge-json.git"
+  },
+  "scripts": {},
+  "version": "0.9.5"
 }
