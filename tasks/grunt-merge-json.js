@@ -51,7 +51,7 @@ module.exports = function (grunt) {
                         try { fragment = grunt.file.readJSON(src); }
                         catch (e) { grunt.fail.warn(e); }
                         json = _.merge(json, fragment, function (a, b) {
-                            return _.isArray(a) ? a.concat(b) : undefined;
+                            return _.isArray(a) ? _.uniqWith(a.concat(b), _.isEqual) : undefined;
                         });
                     }
                 });
