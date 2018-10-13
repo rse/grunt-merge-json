@@ -36,6 +36,7 @@ grunt.loadNpmTasks('grunt-merge-json');
 
 - `replacer`: (default `null`) the replacer argument for `JSON.stringify()` (second argument).
 - `space`: (default `\t`) the space argument for `JSON.stringify()` (third argument).
+- `root`: (default `undefined`) the root key under which all files will be merged.
 
 ## Merge JSON Task
 
@@ -117,3 +118,28 @@ grunt.initConfig({
 });
 ```
 
+### Merge under a common key
+
+You need to use the `root` options:
+
+```js
+grunt.initConfig({
+    "merge-json": {
+        options: {
+            root: 'i18n'
+        }
+        "en": {
+            src: [ "src/**/*-en.json" ],
+            dest: "www/en.json"
+        }
+    }
+});
+```
+The result will be a json file with all keys from `src/**/*-en.json` under the key `i18n`:
+```json
+{
+    "i18": {
+        // all merged keys
+    }
+}
+```
