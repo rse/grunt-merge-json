@@ -32,7 +32,8 @@ module.exports = function (grunt) {
         /*  prepare options  */
         var options = this.options({
             replacer: null,
-            space: "\t"
+            space: "\t",
+            toArray: false
         });
         grunt.verbose.writeflags(options, "Options");
 
@@ -40,7 +41,7 @@ module.exports = function (grunt) {
         this.files.forEach(function (f) {
             try {
                 /*  start with an empty object  */
-                var json = {};
+                var json = options.toArray ? [] : {};
                 f.src.forEach(function (src) {
                     /*  merge JSON file into object  */
                     if (!grunt.file.exists(src))
@@ -50,9 +51,13 @@ module.exports = function (grunt) {
                         grunt.log.debug("reading JSON source file \"" + chalk.green(src) + "\"");
                         try { fragment = grunt.file.readJSON(src); }
                         catch (e) { grunt.fail.warn(e); }
-                        json = _.merge(json, fragment, function (a, b) {
-                            return _.isArray(a) ? a.concat(b) : undefined;
-                        });
+                        if (_.isArray(json)) {
+                            json.push(fragment);
+                        } else {
+                            json = _.merge(json, fragment, function (a, b) {
+                                return _.isArray(a) ? a.concat(b) : undefined;
+                            });
+                        }
                     }
                 });
 

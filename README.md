@@ -36,6 +36,7 @@ grunt.loadNpmTasks('grunt-merge-json');
 
 - `replacer`: (default `null`) the replacer argument for `JSON.stringify()` (second argument).
 - `space`: (default `\t`) the space argument for `JSON.stringify()` (third argument).
+- `isArray`: (default `false`) merge to an array.
 
 ## Merge JSON Task
 
@@ -100,6 +101,41 @@ grunt.initConfig({
         }
     }
 });
+```
+
+### Single file per target (as array)
+
+```js
+grunt.initConfig({
+    "merge-json": {
+        "options": {
+            "toArray": true
+        },
+        "en": {
+            src: [ "src/**/*-en.json" ],
+            dest: "www/en.json"
+        }
+    }
+})
+```
+
+ - `www/en.json`:
+
+```json
+[
+    {
+        "foo": {
+            "title": "The Foo",
+            "name":  "A wonderful component"
+        }
+    },
+    {
+        "bar": {
+            "title": "The Bar",
+            "name":  "An even more wonderful component"
+        }
+    }
+]
 ```
 
 ### Multiple files per target variant
